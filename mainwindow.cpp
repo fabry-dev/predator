@@ -52,11 +52,6 @@ MainWindow::MainWindow(QWidget *parent) :
 
     tp->show();
 
-    //em->start();
-
-    //sendEmail("frederic.abry@gmail.com");
-
-    //gm->start(3);
 }
 
 
