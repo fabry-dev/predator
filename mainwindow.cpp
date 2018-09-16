@@ -8,9 +8,8 @@
 #include <stdio.h>
 
 
-#include <QQuickView>
 #include <QGuiApplication>
-#include <QQmlEngine>
+
 
 
 MainWindow::MainWindow(QWidget *parent) :
