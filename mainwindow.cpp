@@ -30,10 +30,6 @@ MainWindow::MainWindow(QWidget *parent) :
     }
 
 
-
-
-
-
     setWindowState(Qt::WindowFullScreen);
 
 
