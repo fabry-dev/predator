@@ -28,7 +28,7 @@ MainWindow::MainWindow(QWidget *parent) :
         QApplication::setOverrideCursor(cursor);
         QApplication::changeOverrideCursor(cursor);
     }
- //
+
 
     setWindowState(Qt::WindowFullScreen);
 
