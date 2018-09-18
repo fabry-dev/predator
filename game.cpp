@@ -1,7 +1,7 @@
 #include "game.h"
 #include "qdebug.h"
 #include "qtimer.h"
-#include "mainwindow.h"
+
 
 #define NBCANS 16
 

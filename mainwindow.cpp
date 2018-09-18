@@ -48,10 +48,10 @@ MainWindow::MainWindow(QWidget *parent) :
     em = new email(this,PATH+"emailbg2.png",PATH+"Futura.ttc");
     connect(em,SIGNAL(sendEmail(QString)),this,SLOT(onEmailReceived(QString)));
 
-
     tp->show();
-
+    //sendEmail("frederic.abry@gmail.com");
 }
+
 
 
 
@@ -77,12 +77,18 @@ void MainWindow::getParams(QStringList params)
 
 #define FROM        "mountaindew@voxbuyandwin.com"
 
-//#define CC          "otheruser@domain.com"
-//#define BCC         "otheruser@domain.com"
-#define SMTPSERVER  "smtp.1and1.com"
-#define SMTPPORT    25
+
+
+#define SMTPSERVER  "auth.smtp.1and1.fr"
+#define SMTPPORT    465
 #define SMTPUSER    "mountaindew@voxbuyandwin.com"
-#define SMTPPASS    "Mountaindew@18"
+#define SMTPPASS    "cE%g&uJ4*W23"
+
+
+
+
+
+
 
 void list_attachment_callback (quickmail mailobj, const char* filename, quickmail_attachment_open_fn email_info_attachment_open, quickmail_attachment_read_fn email_info_attachment_read, quickmail_attachment_close_fn email_info_attachment_close, void* callbackdata)
 {
@@ -119,14 +125,6 @@ void MainWindow::sendEmail(QString email)
     char *body2 = body1.data();
     qDebug()<<body;
 
-
-
-
-
-
-    //quickmail_set_body(mailobj, body2);
-
-    //quickmail_add_body_memory(mailobj, NULL, "This is a test e-mail.\nThis mail was sent using libquickmail.", 64, 0);
     quickmail_add_body_memory(mailobj, "text/html", body2, body.size(), 0);
 
 
@@ -136,19 +134,6 @@ void MainWindow::sendEmail(QString email)
 
     quickmail_add_attachment_file(mailobj, at2, NULL);
 
-    /**/
-    //
-    // quickmail_add_attachment_file(mailobj, "test_quickmail.cbp", NULL);
-    // quickmail_add_attachment_memory(mailobj, "test.log", NULL, "Test\n123", 8, 0);
-
-
-
-
-
-
-
-
-
 
 
 
@@ -156,12 +141,18 @@ void MainWindow::sendEmail(QString email)
 
     const char* errmsg;
     quickmail_set_debug_log(mailobj, stderr);
-    if ((errmsg = quickmail_send(mailobj, SMTPSERVER, SMTPPORT, SMTPUSER, SMTPPASS)) != NULL)
+    qDebug()<<"test send";
+
+    if ((errmsg = quickmail_send_secure(mailobj, SMTPSERVER, SMTPPORT, SMTPUSER, SMTPPASS)) != NULL)
+
+
+
     {
 
         qDebug()<< "Error sending e-mail: "<<stderr ;
 
         QString filename=PATH+"EmailsFailure.txt";
+        qDebug()<<filename;
         QFile file( filename );
         if ( file.open(QIODevice::ReadWrite) )
         {

@@ -10,7 +10,7 @@
 #include <QMouseEvent>
 #include "qstringlist.h"
 #include "cans.h"
-
+#include "mainwindow.h"
 
 
 
