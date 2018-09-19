@@ -124,7 +124,7 @@ void MainWindow::sendEmail(QString email)
     quickmail_add_body_memory(mailobj, "text/html", body2, body.size(), 0);
 
 
-    QString at = PATH+"ticket.pdf";
+    QString at = PATH+"Virgin Radio 4DX Offer.pdf";
     QByteArray at1 = at.toLatin1();
     char *at2  = at1.data();
 
